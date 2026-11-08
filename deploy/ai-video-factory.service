@@ -1,0 +1,18 @@
+[Unit]
+Description=AI Video Factory Production Pipeline
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/ai-video-factory
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 factory.py --demo
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ai-video-factory
+
+[Install]
+WantedBy=multi-user.target
